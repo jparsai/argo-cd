@@ -1214,7 +1214,7 @@ func (s *ArgoCDServer) getIndexData() ([]byte, error) {
 }
 
 func (server *ArgoCDServer) uiAssetExists(filename string) bool {
-	f, err := server.staticAssets.Open(strings.Trim(filename, "/"))
+	f, err := server.staticAssets.Open(filepath.Clean(filename))
 	if err != nil {
 		return false
 	}
